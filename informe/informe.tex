@@ -1,0 +1,396 @@
+\documentclass[a4paper, 10pt, twoside]{article}
+
+\usepackage[top=1in, bottom=1in, left=1in, right=1in]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish, es-ucroman, es-noquoting, activeacute]{babel}
+\usepackage{setspace}
+\usepackage{fancyhdr}
+
+\usepackage{lastpage}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{verbatim}
+\usepackage{fancyvrb}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{enumitem} % Provee macro \setlist
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage{hyperref}
+\usepackage{xspace}
+\usepackage{qtree}
+\usepackage[toc, page]{appendix}
+\usepackage{enumitem}
+\usepackage{userStories}
+
+
+%%%%%%%%%% Constantes - Inicio %%%%%%%%%%
+\newcommand{\titulo}{Trabajo Práctico 1}
+\newcommand{\materia}{Ingeniería de Software II}
+\newcommand{\integrantes}{Almansi, Gasperi Jabalera, Russo, Tagliavini}
+\newcommand{\cuatrimestre}{Primer Cuatrimestre de 2016}
+%%%%%%%%%% Constantes - Fin %%%%%%%%%%
+
+
+%%%%%%%%%% Configuración de Fancyhdr - Inicio %%%%%%%%%%
+\pagestyle{fancy}
+\thispagestyle{fancy}
+\lhead{\titulo\ · \materia}
+\rhead{\integrantes}
+\renewcommand{\footrulewidth}{0.4pt}
+\cfoot{\thepage /\pageref{LastPage}}
+
+\fancypagestyle{caratula} {
+   \fancyhf{}
+   \cfoot{\thepage /\pageref{LastPage}}
+   \renewcommand{\headrulewidth}{0pt}
+   \renewcommand{\footrulewidth}{0pt}
+}
+%%%%%%%%%% Configuración de Fancyhdr - Fin %%%%%%%%%%
+
+
+%%%%%%%%%% Miscelánea - Inicio %%%%%%%%%%
+% Evita que el documento se estire verticalmente para ocupar el espacio vacío
+% en cada página.
+\raggedbottom
+
+% Separación entre párrafos.
+\setlength{\parskip}{0.5em}
+
+% Separación entre elementos de listas.
+\setlist{itemsep=0.5em}
+
+% Asigna la traducción de la palabra 'Appendices'.
+\renewcommand{\appendixtocname}{Apéndices}
+\renewcommand{\appendixpagename}{Apéndices}
+
+\newcommand{\grafico}[1]{
+  \begin{center}
+    \includegraphics[width=15cm]{#1}
+  \end{center}
+}
+
+
+%%%%%%%%%% Miscelánea - Fin %%%%%%%%%%
+
+
+%%%%%%%%%% User stories y tareas - Inicio %%%%%%%%%%
+% Entorno dentro del cual se declaran las stories del product backlog con el
+% macro \story.
+\newenvironment{stories}{
+  \begin{itemize}
+}{
+  \end{itemize}
+}
+
+% Uso: \story{id}{rol}{historia}{criterio de aceptación}.
+\newcommand{\story}[4]{
+  \item
+  \textbf{ID #1:} Como \emph{#2} quiero \emph{#3} para \emph{#4}.
+}
+
+% Uso: \sprintstory{id}{rol}{historia}{criterio de aceptación}.
+\newcommand{\sprintstory}[4]{
+  \noindent
+  \textbf{ID #1:} Como \emph{#2} quiero \emph{#3} para \emph{#4}.
+}
+
+% Entorno dentro del cual se declaran los detalles de un story con el macro
+% \detalle.
+\newenvironment{detalles}{
+  \textbf{Detalles:}
+  \begin{itemize}
+}{
+  \end{itemize}
+}
+
+% Uso: \detalle{un detalle de la story}
+\newcommand{\detalle}[1] {
+  \item #1.
+}
+
+% Entorno dentro del cual se declaran los criterios de aceptación de un story
+% con el macro \criterio.
+\newenvironment{criterios}{
+  \textbf{Criterio de aceptación:}
+  \begin{itemize}
+}{
+  \end{itemize}
+}
+
+% Uso: \criterio{criterio de aceptación}
+\newcommand{\criterio}[1] {
+  \item #1
+}
+
+% Entorno dentro del cual se declaran las tareas de un story con el macro \task.
+\newenvironment{tasks}{
+  \textbf{Tareas:}
+  \begin{enumerate}
+}{
+  \end{enumerate}
+}
+
+
+
+\begin{document}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Carátula                                                                  %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\thispagestyle{caratula}
+
+\begin{center}
+
+\includegraphics[height=2cm]{DC.png} 
+\hfill
+\includegraphics[height=2cm]{UBA.jpg} 
+
+\vspace{2cm}
+
+Departamento de Computación,\\
+Facultad de Ciencias Exactas y Naturales,\\
+Universidad de Buenos Aires
+
+\vspace{4cm}
+
+\begin{Huge}
+\titulo
+\end{Huge}
+
+\vspace{0.5cm}
+
+\begin{Large}
+\materia
+\end{Large}
+
+\vspace{1cm}
+
+\cuatrimestre
+
+\vspace{4cm}
+
+\begin{tabular}{|c|c|c|}
+\hline
+Apellido y Nombre & LU & E-mail\\
+\hline
+Almansi, Emilio Guido          & 674/12         & ealmansi@gmail.com\\
+Gasperi Jabalera, Fernando     & 56/09            & fgasperijabalera@gmail.com\\
+Christian ``El Capo del Sorting'' Russo               & 679/10         & christian.russo8@gmail.com\\
+Tagliavini Ponce, Guido       & 783/11            & guido.tag@gmail.com\\
+\hline
+\end{tabular}
+
+\end{center}
+
+\newpage
+
+\tableofcontents
+
+\newpage
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Introducción                                                              %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\section{Introducción}
+
+El actual informe presenta el an\'alisis y desarrollo inicial realizado para el producto \textbf{The Curry Game}. En el mismo se detallan el conjunto de user stories que abarcan el desarrollo completo de la aplicaci\'on, incluyendo tanto las definiciones actuales como los puntos de extensi\'on que se tendr\'an en cuenta. 
+El objetivo de la aplicaci\'on es que los usuarios puedan armar sus equipos de basket, pudiendo participar de desaf\'ios entre los usuarios con el fin de ganar mas fichas que le permiten armar un mejor y m\'as robusto equipo. 
+El sistema cuenta con una simulaci\'on del juego, que provee un log para poder ver c'omo se desarrolla el juego.
+
+
+\subsection{Roles de usuario}
+
+Por brevedad, se utilizan los siguientes roles en las User Stories a lo largo de este trabajo:
+
+\begin{description}
+  \item[Jugador:] cualquier usuario del sistema.
+
+  \item[Participante:] un jugador que postula o acepta un desaf\'io.
+
+  \item[Game designer:] el encargado de determinar los detalles de la simulaci\'on.
+
+
+\end{description}
+
+\subsection{Observaciones}
+La herramienta de planificaci\'on \'agil elegida por el equipo es \textbf{TargetProcess}. Esta herramienta utiliza un sistema de ranking para el Business Value muy particular, que nosotros traducimos en valores entero del 1 al 4 del siguiente modo:
+\begin{itemize}
+    \item Must Have: 4
+    \item Great: 3
+    \item Average: 2
+    \item Nice To Have: 1
+\end{itemize} 
+
+Utilizamos Spikes para mostrar las tareas preliminares. 
+Por otro lado, luego de hacer un an\'alisis del sistema se decidi\'o que el lenguaje de programaci\'on que utilizaremos ser\'a Python, que es de f'acil utilizaci'on para programaci'on de prop'osito general (como programar el simulador en cuesti'on) y provee una sencilla API para realizar solicitudes HTTP.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Product backlog                                                           %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Product Backlog}
+En esta secci\'on se listan todas las User Stories del Backlog de nuestro sistema.
+
+\subsection{Spikes}
+
+\begin{enumerate}
+    \item Investigar sobre qu\'e lenguaje es el m\'as adecuado para implementar el sistema. \textbf{(Horas Hombres: 2)}
+    \item Investigar la API de la NBA para evaluar la dificultad de implementar la lectura autom\'atica de datos de jugadores. \textbf{(Horas Hombres: 2)}
+    \item Investigar la API de Twitter para evaluar la dificultad de implementar la medici\'on de popularidad de un jugador en Twitter. \textbf{(Horas Hombres: 1)}
+    \item Instalar un entorno de desarrollo \textbf{(Horas Hombres: 2)}
+    \item Instalar un entorno de testing  \textbf{(Horas Hombres: 3)}
+\end{enumerate}
+
+
+\subsection{Product backlog}
+\subsubsection{Turnos}
+\begin{enumerate}
+    \item Como game designer quiero que el juego tenga 40 turnos.
+    \\SP: 1, BV: 4
+    \item Como game designer quiero que al empezar cada turno, un equipo comience atacando y el otro defendiendo.
+    \\SP: 1, BV: 4
+    \item Como game designer quiero que al empezar cada turno, el equipo que comienza atacando se vaya alternando entre ambos equipos.
+    \\SP: 2, BV: 4
+    \item Como game designer quiero que al empezar el primer turno, el equipo atacante sea elegido al azar.
+    \\SP: 2, BV: 4
+    \item Como game designer quiero que los turnos acaben si la pelota se va de la cancha o si se realiza un tiro exitoso al aro.
+    \\SP: 3, BV: 4
+    \item Como game designer quiero que, en caso de que se agoten los turnos y ambos equipos tengan el mismo puntaje, se jueguen 6 turnos extra de pr\'orroga.
+	\\SP: 3, BV: 4
+\subsubsection{Sobre un Jugador}
+    \item Como game designer quiero que un jugador en ataque pueda lanzar la pelota al aro (por 2 o 3 puntos) o intentar un pase, y s\'olo eso.
+    \\SP: 3, BV: 4
+    \item Como game designer quiero que un jugador en defensa pueda intentar bloquear tiros al aro de otro jugador. 
+     \\SP: 3, BV: 4
+    \item Como game designer quiero que un jugador en defensa pueda interceptar pases.
+    \\SP: 8, BV: 4
+    \subsubsection{Puntos}
+        \item Como game designer quiero que cuando un jugador realice un tiro al aro con \'exito, su equipo sume 2 o 3 puntos seg\'un corresponda.
+    \\SP: 2, BV: 4
+\subsubsection{Rebotes y pelotas divididas}
+    \item Como game designer quiero que cuando cuando un tiro al aro resulte fallido o bloqueado, la pelota quede dividida y ambos equipos tengan la posibilidad de recuperarla.
+    \\SP: 2, BV: 4
+    \item Como game designer quiero que cuando una pelota quede dividida, la misma se dispute en forma intercalada entre los jugadores del equipo defensivo y del equipo ofensivo, en orden decreciente seg\'un n\'umero de posici\'on.
+    \\SP: 5, BV: 4
+    \item Como game designer quiero que cuando un jugador defensor gane una pelota dividida, se inviertan los roles de atacante y defensor entre ambos equipos.
+    \\SP: 3, BV: 4
+    \item Como game designer quiero que cuando un jugador atacante gane una pelota dividida, contin\'ue atacando su equipo.
+    \\SP: 3, BV: 4
+    \item Como game designer quiero que cuando ante una pelota dividida ninguno de los 10 jugadores gana el rebote, entonces la pelota salga de la cancha.
+    \\SP: 3, BV: 4
+    \subsubsection{Pases y robos de pelota}
+    \item Como game designer quiero que cuando un jugador realice un pase de pelota exitoso y sin intercepci\'on, aumente en un peque\~no porcentaje la chance de \'exito de tiro al aro del jugador que realiza el tiro posteriormente en la jugada.
+    \\SP: 1, BV: 4
+    \item Como game designer quiero que cuando un jugador defensor tenga \'exito interceptando un pase, se cambien los roles de atacante y defensor entre los equipos y contin\'ue como atacante el equipo del defensor que rob\'o la pelota.
+    \\SP: 3, BV: 4
+    \item Como game designer quiero que cuando un pase sea fallido y adem\'as no sea interceptado por un defensor contrario, la pelota salga de la cancha.
+    \\SP: 5, BV: 4
+    \subsubsection{Sobre el equipo (DT y libro de jugadas)}
+    \item  Como game designer quiero que el t\'ecnico tenga un libro de jugadas para jugar adecuadamente.
+    \\SP: 3, BV: 4
+    \item Como game designer quiero que el t\'ecnico tenga una frecuencia para cada jugada del libro para para poder ejecutarlas como si \'el lo hiciera.
+    \\SP: 2, BV: 4
+    \item  Como game designer quiero que al comenzar el ataque de un equipo (ya sea al iniciar un turno, recuperar una pelota dividida, o interceptar un pase), se elija una jugada ofensiva del libro de jugadas del director t\'ecnico del equipo atacante, teniendo en cuenta la frecuencia asignada a las mismas.
+    \\SP: 2, BV: 4
+    \item Como game designer quiero que cuando el equipo atacante elija una jugada ofensiva, el equipo defensor escoja una jugada defensiva de su libro de jugadas, teniendo en cuenta la frecuencia asignada a las mismas.
+    \\SP: 2, BV: 4
+    \subsubsection{Jugadas}
+    \item Como game designer quiero que se pueda usar la jugada ofensiva colectiva externa. 
+    \\SP: 3, BV: 4
+    \item Como game designer quiero que se pueda usar la jugada ofensiva colectiva interna.
+    \\SP: 3, BV: 4
+    \item Como game designer quiero que se pueda usar la jugada ofensiva MVP.
+    \\SP: 3, BV: 4
+    \item Como game designer quiero que se pueda usar la jugada ofensiva Contra Ataque.
+    \\SP: 3, BV: 4
+    \item Como game designer quiero que se pueda usar la jugada defensiva Hombre a Hombre.
+    \\SP: 3, BV: 4
+    \item Como game designer quiero que se pueda usar la Dos Cada.
+    \\SP: 5, BV: 4
+    \item Como game designer quiero que se pueda usar la FiboJugada.
+    \\SP: 5, BV: 4
+    \subsubsection{F\'ormulas de resoluci\'on de acciones}
+    \item Como game designer quiero que cada UE de una acci\'on X sea la probabilidad de \'exito al realizar la acci\'on X.
+    \\SP: 3, BV: 4
+    \item Como game designer quiero que el Umbral de Exito (UE) de tiro por 2 puntos sea FG para hacer el juego m\'as realista.
+    \\SP: 2, BV: 4
+    \item Como game designer quiero que el Umbral de Exito (UE) de tiro por 3 puntos sea 3P para hacer el juego m\'as realista.
+    \\SP: 2, BV: 4
+    \item Como game designer quiero que el Umbral de Exito (UE) de bloqueo sea  BPG * 0.2 para hacer el juego m\'as realista.
+    \\SP: 2, BV: 4
+    \item Como game designer quiero que el Umbral de Exito (UE) de pase de pelota sea 1 - TO * 0.1 para hacer el juego m\'as realista.
+    \\SP: 2, BV: 4
+    \item Como game designer quiero que el Umbral de Exito (UE) de robo de pelota sea SPG * 0.2 para hacer el juego m\'as realista.
+    \\SP: 2, BV: 4
+    \item Como game designer quiero que el Umbral de Exito (UE) de reboteo de pelota sea RPG * 0.05 para hacer el juego m\'as realista.
+    \\SP: 2, BV: 4
+    \item Como game designer quiero tener las estad\'isticas originales de los jugadores para que la simulaci\'on sea m\'as realista.
+    \\SP: 13, BV: 4
+    \item Como game designer quiero que la popularidad en Twitter de los jugadores para afecte mejorar su performance.
+    \\SP: 13, BV: 4
+    \subsubsection{Otras}
+    \item Como jugador quiero armar un equipo para jugar en un desaf\'io.
+    \\SP: 5, BV: 3
+    \item Como jugador quiero aceptar un desaf\'io para ganar ranking, fichas y cap.
+    \\SP: 8, BV: 3
+    \item Como jugador quiero postular un desaf\'io para ganar ranking, fichas y cap.
+    \\SP: 8, BV: 3
+    \item Como participante de desaf\'io quiero en caso de ganar quiero que incremente mi n\'umero de fichas para tener m\'as fichas que otros jugadores y as\'i estar mejor posicionado en el ranking.
+    \\SP: 1, BV: 3
+    \item Como participante de desaf\'io quiero en caso de ganar quiero que incremente mi cap para poder formar mejores equipos.
+    \\SP: 1, BV: 3
+    \item Como participante de desaf\'io quiero apostar fichas.
+    \\SP: 3, BV: 3
+    \item Como participante de desaf\'io quiero que me resten las fichas que apost\'e.
+    \\SP: 2, BV: 3
+    \item Como participante de desaf\'io quiero elegir mi equipo para jugar con los jugadores que considere m\'as adecuados.
+    \\SP: 5, BV: 3
+    \item Como participante de desaf\'io quiero elegir mi DT para ejecutar las jugadas deseadas.
+    \\SP: 3, BV: 3
+    \item Como jugador quiero registrarme con mis datos para darme de alta en el sistema.
+    \\SP: 8, BV: 3
+    \item Como jugador quiero acceder a una tabla de rankings en base a cantidad de desaf\'ios ganados para informarme.
+    \\SP: 8, BV: 2
+    \item Como jugador quiero acceder a una tabla de rankings en base a cantidad de fichas total para informarme.
+    \\SP: 8, BV: 2
+    \item  Como jugador quiero poder guardar cada equipo que arme para usarlo luego en un desaf\'io.
+    \\SP: 5, BV: 2
+    \item Como jugador quiero autenticar mi email para activar mi cuenta.
+    \\SP: 5, BV: 2
+    \item Como jugador quiero loguearme con mi email (o username) para ingresar al sistema.
+    \\SP: 8, BV: 2
+    \item  Como jugador quiero obtener una cantidad inicial de fichas para apuestas para poder apostar.
+    \\SP: 1, BV: 2
+    \item Como jugador quiero obtener una cantidad de presupuesto (cap) inicial para poder armar mi equipo.
+    \\SP: 1, BV: 2
+    
+\end{enumerate}
+ 
+\section{Sprint backlog}
+En esta secci\'on listamos un subconjunto de las User Stories del Backlog que decidimos meter dentro del Sprint teniendo en cuenta el Business Value. Para cada User Story detallamos descripci\'on, tareas, criterios de aceptaci\'on, etc.
+
+\include{sprint}
+
+\include{disenio}
+
+\section{Burndown}
+
+A continuaci\'on mostramos el diagrama Burndown, el cual se utiliza para graficar el trabajo pendiente; en particular, la cantidad de horas pendientes del proyecto a lo largo del tiempo.
+En el gr\'afico vemos la recta azul que simboliza un progreso equitativo y cumpliendo las horas propuestas, y en rojo vemos la curva real. Idealmente, la curva que describe la realidad se parecer\'ia lo m\'as posible a la lineal.
+
+Analizando el gr\'afico podemos ver que el proyecto se llev\'o adelante a un ritmo que se aproxima a un ritmo lineal, a excepci\'on de algunos picos donde se demor\'o el desarrollo, pero luego convergió al resultado esperado.
+
+  \begin{center}
+	\includegraphics[width=15cm]{diagramas/burn}
+  \end{center}
+\include{conclusion}
+
+\end{document}

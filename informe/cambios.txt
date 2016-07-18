@@ -1,0 +1,7 @@
+1) Se emprolijaron textos de la introduccion
+2) Se separaro la US 8 (en 8 y 9)
+3) Se cambio la palabra UE por Umbral de Exito (UE)
+4) Se modifico el SP de la US 18
+5) La US52 le dejamos SP:8 porque segun discutido con tutor es valido
+6) Se cambo "hora estimadas" por "horas hombre"
+7) Se agregaron horas hombres a las spikes.

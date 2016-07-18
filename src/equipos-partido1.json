@@ -1,0 +1,20 @@
+[{
+  "nombre": "Los Angeles Lakers",
+  "base": 1495,
+  "escolta": 2225,
+  "alero": 2755,
+  "alaPivot": 200746,
+  "pivot": 201579,
+  "jugadorEstrella": 1495,
+  "directorTecnico": 0
+},
+{
+  "nombre": "Miami Heat",
+  "base": 202695,
+  "escolta": 203903,
+  "alero": 203944,
+  "alaPivot": 1626148,
+  "pivot": 1626156,
+  "jugadorEstrella": 202695,
+  "directorTecnico": 1
+}]

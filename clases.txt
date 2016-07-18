@@ -1,0 +1,107 @@
+# Simuladores.
+class Simulador():
+class SimuladorPartido(Simulador):
+class SimuladorTurno(Simulador):
+class SimuladorJugada(Simulador):
+class SimuladorMomento(Simulador):
+
+# Resultados de simulación.
+class ResultadoTurno():
+class ResultadoTurnoConversionDoble(ResultadoTurno):
+class ResultadoTurnoConversionTriple(ResultadoTurno):
+class ResultadoTurnoInconcluso(ResultadoTurno):
+class ResultadoTurnoPelotaAfuera(ResultadoTurno):
+
+class ResultadoJugada():
+class ResultadoJugadaConversionDoble(ResultadoJugada):
+class ResultadoJugadaConversionTriple(ResultadoJugada):
+class ResultadoJugadaInconcluso(ResultadoJugada):
+class ResultadoJugadaPaseRobado(ResultadoJugada):
+class ResultadoJugadaPelotaAfuera(ResultadoJugada):
+class ResultadoJugadaPelotaRecuperada(ResultadoJugada):
+
+class ResultadoMomento():
+class ResultadoMomentoConversionDoble(ResultadoMomento):
+class ResultadoMomentoConversionTriple(ResultadoMomento):
+class ResultadoMomentoInconcluso(ResultadoMomento):
+class ResultadoMomentoPaseExitoso(ResultadoMomento):
+class ResultadoMomentoPaseRobado(ResultadoMomento):
+class ResultadoMomentoPelotaAfuera(ResultadoMomento):
+class ResultadoMomentoPelotaDividida(ResultadoMomento):
+class ResultadoMomentoPelotaRecuperada(ResultadoMomento):
+
+# Conformación de equipo.
+class Equipo():
+class Jugador():
+class EstadisticasJugador():
+class PosicionJugador():
+class PosicionJugadorAlaPivot(PosicionJugador):
+class PosicionJugadorAlero(PosicionJugador):
+class PosicionJugadorBase(PosicionJugador):
+class PosicionJugadorEscolta(PosicionJugador):
+class PosicionJugadorPivot(PosicionJugador):
+class DirectorTecnico():
+class LibroJugadas():
+
+# Formulas resolución de acciones
+class FormulaResolucionAcciones():
+class FormulaAccionAtacantePase(FormulaResolucionAcciones):
+class FormulaAccionAtacanteTiroDoble(FormulaResolucionAcciones):
+class FormulaAccionAtacanteTiroTriple(FormulaResolucionAcciones):
+class FormulaAccionDefensivaBloqueoDeTiro(FormulaResolucionAcciones):
+class FormulaAccionDefensivaRoboDePase(FormulaResolucionAcciones):
+class FormulaAccionRebote(FormulaResolucionAcciones):
+class ResolvedorAcciones(): # Esta es la clase no hereda de nadie pero es concreta!
+
+# Jugadas
+class JugadaAtacante():
+class JugadaAtacanteColectivaExternaDoble(JugadaAtacante):
+class JugadaAtacanteColectivaExternaTriple(JugadaAtacante):
+class JugadaAtacanteContraataque(JugadaAtacante):
+class JugadaAtacanteMVP(JugadaAtacante):
+
+class JugadaDefensiva():
+class JugadaDefensivaHombreAHombre(JugadaDefensiva):
+
+# Jugadas en ejecución
+class JugadaAtacanteEjecucion():
+class JugadaAtacanteEjecucionColectivaExternaDoble(JugadaAtacanteEjecucion):
+class JugadaAtacanteEjecucionColectivaExternaTriple(JugadaAtacanteEjecucion):
+class JugadaAtacanteEjecucionContraataque(JugadaAtacanteEjecucion):
+class JugadaAtacanteEjecucionMVP(JugadaAtacanteEjecucion):
+
+class JugadaDefensivaEjecucion():
+class JugadaDefensivaEjecucionHombreAHombre(JugadaDefensivaEjecucion):
+
+
+# Acciones
+class AccionAtacante():
+class AccionAtacantePase(AccionAtacante):
+class AccionAtacanteTiroDoble(AccionAtacante):
+class AccionAtacanteTiroTriple(AccionAtacante):
+
+class AccionDefensiva():
+class AccionDefensivaBloqueoDeTiro(AccionDefensiva):
+class AccionDefensivaRoboDePase(AccionDefensiva):
+
+class AccionRebote(): # Esta es la clase no hereda de nadie pero es concreta!
+
+# Resultados de accion
+class ResultadoAccionAtacante():
+class ResultadoAccionAtacantePaseExitoso(ResultadoAccionAtacante):
+class ResultadoAccionAtacantePaseFallido(ResultadoAccionAtacante):
+class ResultadoAccionAtacanteTiroDobleExitoso(ResultadoAccionAtacante):
+class ResultadoAccionAtacanteTiroDobleFallido(ResultadoAccionAtacante):
+class ResultadoAccionAtacanteTiroTripleExitoso(ResultadoAccionAtacante):
+class ResultadoAccionAtacanteTiroTripleFallido(ResultadoAccionAtacante):
+
+class ResultadoAccionDefensiva():
+class ResultadoAccionDefensivaBloqueoDeTiroExitoso(ResultadoAccionDefensiva):
+class ResultadoAccionDefensivaBloqueoDeTiroFallido(ResultadoAccionDefensiva):
+class ResultadoAccionDefensivaRoboDePaseExitoso(ResultadoAccionDefensiva):
+class ResultadoAccionDefensivaRoboDePaseFallido(ResultadoAccionDefensiva):
+
+class ResultadoAccionRebote():
+class ResultadoAccionReboteExitoso():
+class ResultadoAccionReboteFallido():
+

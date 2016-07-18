@@ -1,0 +1,35 @@
+FG_PCT       Field Goal Percentage - The percentage of field goals that a player makes. The formula to determine field goal percentage is: Field Goals Made/Field Goals Attempted.
+FGP          Porcentaje de tiros de cancha: aciertos lanzando al aro.
+
+FG3_PCT      3 Point Field Goal Percentage - The percentage of 3 point field goals that a player or team has made. The formula to determine 3 point field goal percentage is: 3 Point Field Goals Made/3 Point Field Goals Attempted.
+TPP          Porcentaje de tiros de 3 puntos: aciertos al aro en tiros lejanos.
+
+REB          Rebounds - A rebound occurs when a player recovers the ball after a missed shot. This statistic is the number of total rebounds a player or team has collected on either offense or defense.
+GP           Games Played - The number of games a player or team has played
+REB / GP     Rebounds per Games Played
+RPG          Rebotes por partido: aciertos en atrapar la pelota en el aire/sin dueño. 
+
+AST          Assists - An assist occurs when a player completes a pass to a teammate that directly leads to a made field goal.
+GP           Games Played - The number of games a player or team has played
+AST / GP     Assists per Games Played
+APG          Asistencias por juego: aciertos en pasar la pelota a otro jugador.
+
+BLK          Blocks - A block occurs when an offensive player attempts a shot, and the defense player tips the ball, blocking their chance to score.
+GP           Games Played - The number of games a player or team has played
+BLK / GP     Blocks per Games Played
+BPG          Bloqueos por juego:  bloqueos a tiros al aro cuando tira otro jugador ­por arriba. 
+
+STL          Steals - A steal occurs when a defensive player takes the ball from a player on offense, causing a turnover.
+GP           Games Played - The number of games a player or team has played
+STL / GP     Steals per Games Played
+SPG          Robos por juego: intercepciones de pases de un oponente a otro ­por debajo.
+
+TOV          Turnovers - A turnover occurs when the team on offense loses the ball to the defense. 
+GP           Games Played - The number of games a player or team has played
+TOV / GP     Turnovers per Games Played
+TPG           Pérdidas por juego: cuánto se le escapa la pelota de sus manos durante el juego.
+
+PTS          Points - The number of points a player or team has scored. A point is scored when a player makes a basket.
+GP           Games Played - The number of games a player or team has played
+PTS / GP     Points per Games Played
+PPG          Puntos por partido: promedio de puntos que suele hacer por partido (su goleo).
